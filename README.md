@@ -3,6 +3,25 @@
 
 **TRUST NO ONE. SECURE EVERY RUN.**
 
+## 🚀 Live Application
+
+<badge>LIVE DEMO</badge>
+
+🌐 **[Launch Zscaler Cyber Guardians – AI Security Intelligence Center](https://kruthika243-zscaler-ai-security-center-app-rso3c5.streamlit.app/)**
+
+The application is deployed using Streamlit Community Cloud. Explore the following features:
+
+- Phishing URL detection and structural analysis
+- Rule-based security risk assessment
+- Google Safe Browsing threat intelligence
+- Security analytics dashboard
+- Scan history and PDF security reports
+
+**Project:** INFO 5737 – Information and Cyber-Security  
+**Team:** Zscaler Cyber Guardians – Team 6
+
+---
+
 A rule-based cybersecurity application developed as part of the Zscaler Cyber Guardians cricket franchise concept. It analyzes suspicious URLs, identifies potential phishing threats, and provides explainable security risk indicators using structural URL analysis and Google Safe Browsing threat intelligence.
 
 ---
