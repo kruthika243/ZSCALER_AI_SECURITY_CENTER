@@ -100,6 +100,48 @@ The application includes rule-based URL analysis, Google Safe Browsing integrati
 
 No machine-learning model training or ML performance evaluation is claimed in this version.
 
+## Application Screenshots
+
+### 1. Security Dashboard
+
+The dashboard provides an overview of URL scans, security classifications, threat distribution, and recent scan activity.
+
+![Security Dashboard](assets/screenshots/01-dashboard-top.png)
+
+![Dashboard Activity](assets/screenshots/02-dashboard-bottom.png)
+
+### 2. Live URL Scanner
+
+The URL scanner combines structural URL analysis, explainable risk scoring, and Google Safe Browsing threat intelligence.
+
+![URL Scanner](assets/screenshots/03-url-scanner-top.png)
+
+![URL Analysis Results](assets/screenshots/04-url-scanner-bottom.png)
+
+### 3. Threat Intelligence
+
+This module analyzes stored URL indicators, suspicious keywords, domain characteristics, and risk distributions.
+
+![Threat Intelligence Overview](assets/screenshots/05-threat-intelligence-top.png)
+
+![Threat Indicator Analysis](assets/screenshots/06-threat-intelligence-bottom.png)
+
+### 4. Security Scan History
+
+Review saved URL scans, structural risk scores, Google Safe Browsing results, and overall security verdicts.
+
+![Scan History](assets/screenshots/07-scan-history-top.png)
+
+![Detailed Scan Information](assets/screenshots/08-scan-history-bottom.png)
+
+### 5. PDF Security Report
+
+The application generates downloadable PDF reports containing URL analysis, threat intelligence, detection evidence, and security recommendations.
+
+![PDF Report Preview](assets/screenshots/09-security-report-preview.png)
+
+![Generated PDF Security Report](assets/screenshots/10-security-report-pdf.png)
+
 ## Disclaimer
 
 This application is an educational cybersecurity project. Its results should be treated as security indicators rather than a guarantee that a URL is safe or malicious.

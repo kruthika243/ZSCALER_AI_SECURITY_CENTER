@@ -10,4 +10,5 @@ database/*.db-shm
 database/*.db-wal
 
 # Test cache
-.pytest_cache/
+.pytest_cache/.DS_Store
+.DS_Store
