@@ -1,40 +1,105 @@
 # Zscaler AI Security Intelligence Center
 
-A data-science and cybersecurity project for phishing URL classification.
+A rule-based cybersecurity application for analyzing suspicious URLs and identifying potential phishing threats using structural URL analysis and Google Safe Browsing threat intelligence.
 
-## Primary dataset
-UCI PhiUSIIL Phishing URL (Website) Dataset, UCI Machine Learning Repository, dataset ID 967:
-https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset
+## Project Overview
 
-The original dataset contains URL and webpage-derived attributes. The deployed URL-only model must use only features that can be computed from the submitted URL. Do not use webpage-derived attributes in that model.
+The Zscaler AI Security Intelligence Center is an interactive Streamlit application designed to assess URL security risks. It combines structural URL analysis, explainable rule-based risk scoring, and Google Safe Browsing API integration to provide security insights.
 
-## Setup (macOS)
+## Key Features
+
+- URL scanning and structural analysis
+- Rule-based phishing risk assessment
+- Google Safe Browsing API integration
+- Threat intelligence results and threat categories
+- Explainable risk indicators
+- Interactive security analytics dashboard
+- SQLite-based scan history
+- PDF security report generation
+- CSV export of scan results
+
+## Technology Stack
+
+- Python
+- Streamlit
+- Pandas
+- SQLite
+- Google Safe Browsing API
+- Requests
+- ReportLab
+
+## Project Architecture
+
+```text
+ZSCALER_AI_SECURITY_CENTER/
+├── app.py
+├── assets/
+├── config/
+├── core/
+├── database/
+├── modules/
+├── tests/
+├── utils/
+├── requirements.txt
+└── README.md
+```
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/kruthika243/ZSCALER_AI_SECURITY_CENTER.git
+cd ZSCALER_AI_SECURITY_CENTER
+```
+
+Create and activate a virtual environment:
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install --upgrade pip
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
-## Download and validate
-```bash
-python src/download_dataset.py
-python src/validate_dataset.py
+## Google Safe Browsing Configuration
+
+Create:
+
+`.streamlit/secrets.toml`
+
+Add your Google Safe Browsing API key:
+
+```toml
+GOOGLE_SAFE_BROWSING_API_KEY = "YOUR_API_KEY"
 ```
 
-The download step writes `data/raw/phiusiil.csv`. The validation step creates:
-- `reports/dataset_validation_report.json`
-- `reports/class_distribution.csv`
+Never commit your API key or secrets file to GitHub.
 
-## Research safeguards
-- Verify label mapping from the UCI dataset documentation.
-- Inspect exact columns before selecting features.
-- Remove duplicate records and investigate duplicate URLs with conflicting labels.
-- Avoid target leakage.
-- Fit preprocessing only on training data.
-- Use stratified train/validation/test partitions.
-- Report precision, recall, F1, ROC-AUC, PR-AUC and confusion matrix.
-- Do not treat a low-risk prediction as proof that a URL is safe.
+## Run the Application
 
-## Project status
-Dataset selected; download and initial validation scripts prepared. No model has been trained and no performance results are claimed yet.
+```bash
+streamlit run app.py
+```
+
+## Risk Assessment
+
+The application combines structural URL indicators with Google Safe Browsing results.
+
+Google Safe Browsing matches can identify known threats. A no-match response does not guarantee that a URL is safe.
+
+The structural risk score is a rule-based assessment, not a machine-learning probability.
+
+## Project Status
+
+The application includes rule-based URL analysis, Google Safe Browsing integration, scan history, security analytics, and PDF reporting.
+
+No machine-learning model training or ML performance evaluation is claimed in this version.
+
+## Disclaimer
+
+This application is an educational cybersecurity project. Its results should be treated as security indicators rather than a guarantee that a URL is safe or malicious.
