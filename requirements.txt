@@ -1,0 +1,8 @@
+streamlit
+pandas
+numpy
+plotly
+tldextract
+reportlab
+pytest
+reportlab==4.2.5

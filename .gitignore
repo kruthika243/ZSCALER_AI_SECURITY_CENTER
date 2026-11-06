@@ -1,0 +1,13 @@
+# Local secrets
+.streamlit/secrets.toml
+
+# Python environment
+.venv/
+
+# Local database and temporary files
+database/*.db
+database/*.db-shm
+database/*.db-wal
+
+# Test cache
+.pytest_cache/

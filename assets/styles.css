@@ -1,0 +1,80 @@
+
+.stApp {
+    background-color: #080D18;
+    color: #E5E7EB;
+}
+
+[data-testid="stSidebar"] {
+    background-color: #0D1423;
+    border-right: 1px solid #202B3D;
+}
+
+[data-testid="stHeader"] {
+    background-color: #080D18;
+}
+
+h1, h2, h3 {
+    color: #F8FAFC;
+}
+
+p, label {
+    color: #CBD5E1;
+}
+
+.metric-card {
+    background: linear-gradient(145deg, #111C30, #0D1525);
+    border: 1px solid #24344D;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 12px;
+}
+
+.metric-label {
+    color: #94A3B8;
+    font-size: 14px;
+}
+
+.metric-value {
+    color: #F8FAFC;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.security-banner {
+    background: linear-gradient(100deg, #10243B, #142D42);
+    border: 1px solid #1D5267;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.status-safe {
+    color: #22C55E;
+    font-weight: bold;
+}
+
+.status-warning {
+    color: #F59E0B;
+    font-weight: bold;
+}
+
+.status-danger {
+    color: #EF4444;
+    font-weight: bold;
+}
+
+div.stButton > button {
+    background-color: #087E8B;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    min-height: 42px;
+}
+
+div.stButton > button:hover {
+    background-color: #0B9AA8;
+    color: white;
+    border: none;
+}
+
