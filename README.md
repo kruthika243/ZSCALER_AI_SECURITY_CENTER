@@ -5,7 +5,8 @@
 
 ## 🚀 Live Application
 
-<badge>LIVE DEMO</badge>
+
+[![LIVE DEMO](https://img.shields.io/badge/LIVE-DEMO-brightgreen?style=for-the-badge&logo=streamlit)](https://kruthika243-zscaler-ai-security-center-app-rso3c5.streamlit.app/)
 
 🌐 **[Launch Zscaler Cyber Guardians – AI Security Intelligence Center](https://kruthika243-zscaler-ai-security-center-app-rso3c5.streamlit.app/)**
 
