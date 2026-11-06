@@ -142,6 +142,17 @@ The application generates downloadable PDF reports containing URL analysis, thre
 
 ![Generated PDF Security Report](assets/screenshots/10-security-report-pdf.png)
 
+## Technical Documentation
+
+Detailed documentation covering the system architecture, detection methodology, API integration, and testing.
+
+| Document | Description |
+|---|---|
+| [Project Documentation](docs/PROJECT_DOCUMENTATION.md) | Project overview, objectives, technologies, modules, and limitations |
+| [System Architecture](docs/SYSTEM_ARCHITECTURE.md) | Architecture diagram, components, workflow, and data flow |
+| [Detection Methodology](docs/DETECTION_METHODOLOGY.md) | URL analysis, rule-based risk scoring, and Google Safe Browsing integration |
+| [Testing Documentation](docs/TESTING_DOCUMENTATION.md) | Automated test cases, results, and testing limitations |
+
 ## Disclaimer
 
 This application is an educational cybersecurity project. Its results should be treated as security indicators rather than a guarantee that a URL is safe or malicious.
