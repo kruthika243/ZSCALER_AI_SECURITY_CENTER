@@ -60,7 +60,7 @@ def check_google_safe_browsing(url: str) -> dict:
             SAFE_BROWSING_ENDPOINT,
             params={"key": api_key},
             json=payload,
-            timeout=15
+            timeout=(3, 6)
         )
 
         response.raise_for_status()

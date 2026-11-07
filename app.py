@@ -44,9 +44,10 @@ if CSS_PATH.exists():
 
 # Sidebar
 with st.sidebar:
+    st.markdown("# 🛡️ ZSCALER CYBER GUARDIANS")
+    st.markdown("### AI SECURITY INTELLIGENCE CENTER")
+    st.caption("TRUST NO ONE. SECURE EVERY RUN.")
 
-    st.markdown("# 🛡️ ZSCALER")
-    st.caption("AI SECURITY CENTER")
     st.divider()
 
     page = st.radio(

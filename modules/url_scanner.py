@@ -61,7 +61,7 @@ def show_url_scanner():
 
     scan_button = st.button(
         "🔎 ANALYZE URL",
-        use_container_width=True,
+        width="stretch",
     )
 
     if scan_button:
@@ -73,40 +73,49 @@ def show_url_scanner():
         try:
             initialize_database()
 
-            # 1. Perform structural URL analysis
-            result = scan_url(url)
+            # Show progress while analysis is running
+            with st.spinner(
+                "Analyzing URL structure and checking threat intelligence..."
+            ):
 
-            # 2. Normalize URL for Google Safe Browsing
-            google_url = url.strip()
+                # 1. Perform structural URL analysis
+                result = scan_url(url.strip())
 
-            if not google_url.startswith(("http://", "https://")):
-                google_url = "https://" + google_url
+                # 2. Normalize URL for Google Safe Browsing
+                google_url = url.strip()
 
-            # 3. Perform live Google threat-intelligence check
-            try:
-                google_result = check_google_safe_browsing(google_url)
+                if not google_url.startswith(("http://", "https://")):
+                    google_url = "https://" + google_url
 
-            except Exception as error:
-                google_result = {
-                    "status": "ERROR",
-                    "matches": [],
-                    "message": (
-                        "Google Safe Browsing check failed: "
-                        + str(error)
-                    ),
-                }
+                # 3. Perform Google Safe Browsing check
+                try:
 
-            # 4. Attach Google result to scan
-            result["google_safe_browsing"] = google_result
+                    google_result = check_google_safe_browsing(
+                        google_url
+                    )
 
-            # 5. Save complete scan, including Google result
-            save_scan(result)
+                except Exception as error:
 
-            # 6. Save latest scan in Streamlit session
-            st.session_state["latest_scan"] = result
+                    google_result = {
+                        "status": "ERROR",
+                        "matches": [],
+                        "message": (
+                            "Google Safe Browsing check failed: "
+                            + type(error).__name__
+                        ),
+                    }
+
+                # 4. Attach Google result
+                result["google_safe_browsing"] = google_result
+
+                # 5. Save scan history
+                save_scan(result)
+
+                # 6. Store latest result
+                st.session_state["latest_scan"] = result
 
             st.success(
-                "URL analysis completed and saved to scan history."
+                "URL analysis completed and saved successfully."
             )
 
         except ValueError as error:
@@ -114,7 +123,9 @@ def show_url_scanner():
             return
 
         except Exception as error:
-            st.error(f"URL analysis failed: {error}")
+            st.error(
+                f"URL analysis failed: {type(error).__name__}: {error}"
+            )
             return
 
     # Retrieve latest scan
@@ -140,7 +151,7 @@ def show_url_scanner():
 
         st.plotly_chart(
             risk_gauge(result["risk_score"]),
-            use_container_width=True,
+            width="stretch",
         )
 
     # Overall security classification

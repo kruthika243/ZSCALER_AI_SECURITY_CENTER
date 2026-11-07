@@ -6,3 +6,4 @@ tldextract
 reportlab
 pytest
 reportlab==4.2.5
+requests>=2.31.0
