@@ -39,6 +39,12 @@ def risk_gauge(score):
     return fig
 
 
+# Clear old results when the URL input changes
+def clear_latest_scan():
+
+    st.session_state.pop("latest_scan", None)
+
+
 def show_url_scanner():
 
     st.markdown("## 🔍 Live URL Security Scanner")
@@ -57,6 +63,7 @@ def show_url_scanner():
         "Enter URL to analyze",
         placeholder="https://example.com",
         key="scanner_url",
+        on_change=clear_latest_scan,
     )
 
     scan_button = st.button(
@@ -67,18 +74,23 @@ def show_url_scanner():
     if scan_button:
 
         if not url.strip():
+
             st.error("Please enter a URL.")
+            st.session_state.pop("latest_scan", None)
             return
 
+        # Remove previous result before starting a new scan
+        st.session_state.pop("latest_scan", None)
+
         try:
+
             initialize_database()
 
-            # Show progress while analysis is running
             with st.spinner(
-                "Analyzing URL structure and checking threat intelligence..."
+                "Analyzing URL structure and checking Google Safe Browsing..."
             ):
 
-                # 1. Perform structural URL analysis
+                # 1. Structural URL analysis
                 result = scan_url(url.strip())
 
                 # 2. Normalize URL for Google Safe Browsing
@@ -87,7 +99,7 @@ def show_url_scanner():
                 if not google_url.startswith(("http://", "https://")):
                     google_url = "https://" + google_url
 
-                # 3. Perform Google Safe Browsing check
+                # 3. Google Safe Browsing lookup
                 try:
 
                     google_result = check_google_safe_browsing(
@@ -108,10 +120,10 @@ def show_url_scanner():
                 # 4. Attach Google result
                 result["google_safe_browsing"] = google_result
 
-                # 5. Save scan history
+                # 5. Save completed scan
                 save_scan(result)
 
-                # 6. Store latest result
+                # 6. Store current scan
                 st.session_state["latest_scan"] = result
 
             st.success(
@@ -119,19 +131,22 @@ def show_url_scanner():
             )
 
         except ValueError as error:
+
             st.error(str(error))
             return
 
         except Exception as error:
+
             st.error(
                 f"URL analysis failed: {type(error).__name__}: {error}"
             )
             return
 
-    # Retrieve latest scan
+    # Retrieve only the latest completed scan
     result = st.session_state.get("latest_scan")
 
     if not result:
+
         st.info(
             "Enter a URL above to begin your security analysis."
         )
@@ -267,6 +282,7 @@ def show_url_scanner():
     if result["reasons"]:
 
         for reason in result["reasons"]:
+
             st.markdown(f"- ⚠️ {reason}")
 
     else:
